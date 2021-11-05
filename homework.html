@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			textarea{
+				resize: none;
+			}
+			
+			ul{
+				list-style: none;
+				}
+			dl dt{
+			    float: left;
+			    }
+			        
+			       .test3 dl dt,.test3 dl dd{
+			            height: 50px;
+			            line-height: 40px;
+			        }
+			        .test3 dl dt{
+			            text-align: center;
+			            width: 120px;
+			            background-color: aqua;
+			            border-right: 2px solid white;
+			        }
+			        .test3 dl dd{
+			            text-indent: .5em;
+			            margin: 5px;
+			            width: 500px;
+			            background-color: lightpink;
+			        }
+			       .test3 dl dd:last-child{
+			            background: lightgrey;
+			            text-indent: 0;
+			            text-align: center;
+			        }
+			    </style>
+		</style>
+	</head>
+	<body>
+		<script>
+		document.write('<h2>第1题</h2>');
+		</script>
+		<input id="all" type="button" value='全选'>
+		<input id="allnot" type="button" value="全不选">
+		<input id="reserse" type="button" value="反选">
+		<br>
+		<input class="check" type="checkbox">复选框说明信息
+		<br>
+		<input class="check" type="checkbox">复选框说明信息
+		<br>
+		<input class="check" type="checkbox">复选框说明信息
+		<br>
+		<input class="check" type="checkbox">复选框说明信息
+		<br>
+		<input class="check" type="checkbox">复选框说明信息
+		<br>
+		<script>
+			// 获取元素
+			var all=document.querySelector('#all');
+			var allnot=document.querySelector('#allnot');
+			var reserve=document.querySelector('#reserse');
+			var checklist=document.querySelectorAll('.check');
+			// 全选
+			all.onclick=function(){
+					for(var i=0;i<checklist.length;i++){
+						checklist[i].checked=true;
+					}
+			}
+			// 全不选
+			allnot.onclick=function(){
+				for(var i=0;i<checklist.length;i++){
+					checklist[i].checked=false;
+				}
+			}
+			// 反选
+			reserve.onclick=function(){
+				for(var i=0;i<checklist.length;i++){
+					checklist[i].checked=!checklist[i].checked;
+				}
+			}
+		</script>
+		<script>
+		document.write('<h2>第2题表单1</h2>');
+		</script>
+		<form action="./ok.html" method="get">
+		<label for="a">姓名</label>：<input type="text" name="a" value="" id="a">
+			<br><br>
+		<lable for="b">密码</lable>：<input type="password" name="b" value="" id="b">
+			<br><br>
+			<label>
+			性别：
+			<input type="radio"  name="c"  value="r2">男
+			<input type="radio"  name="c"  value="r3">女
+			<br><br>
+			
+			年龄：
+			<select>
+				<option value="">20</option>
+				<option value="1">21</option>
+				<option value="2">22</option>
+			</select><!-- 菜单 -->
+			<br><br>
+			爱好：
+			<input type="radio" name="d" value="c1">读书
+			<input type="radio" name="d" value="c1">音乐
+			<input type="radio" name="d" value="c1">上网
+			<br><br>
+			简介：
+			<textarea name="e" rows="5" cols="15" id="e">暂无内容</textarea>
+			<br><br>
+			<!-- <input type="submit" value="提交"> -->
+			<button id="c">提交</button>
+			<button id="d">重置</button>
+			<p></p>
+			<!-- <br><br> -->
+			<!-- <input type="reset" value="重置"> -->
+			</form>
+			<script>
+				var name=document.querySelector('#a');
+				var pwd=document.querySelector('#b');
+				var submit=document.querySelector('#c');
+				var reset=document.querySelector('#d');
+				var e=document.querySelector('#e');
+				var para=document.querySelector('p');
+				submit.onclick=function(){
+					let content=e.textContent;
+					if(name.value===' '||pwd.value===' '){
+						submit.disabled=true;
+						// para.textContent='姓名不能为空';
+						alert('姓名不能为空')
+					}else if(pwd.length<2||pwd.length>10){
+						submit.disabled=true;
+						para.textContent='密码位数不正确';
+					}else if(content){
+						
+					}
+				}
+			document.write('<hr>');
+			</script>
+			<script>
+			document.write('<h2>第2题表单2</h2>');
+			</script>
+			 <form action="./ok.html" class="test3">
+			        <h2>Information Form</h2>
+			        <dl>
+			            <dt>name</dt>
+			            <dd><input type="text" class="name2"></dd>
+			            <dt>pwd</dt>
+			            <dd><input type="password" class="passwd2"></dd>
+			            <dt>sex</dt>
+			            <dd>
+			                <input type="radio" name="sex" id="male">
+			                <label for="male">male</label>
+			                <input type="radio" name="sex" id="female">
+			                <label for="female">female</label>
+			            </dd>
+			            <dt>age</dt>
+			            <dd>
+			                <select name="age2" id="age2">
+			                    <option value="1">1</option>
+			                    <option value="2">2</option>
+			                    <option value="3">3</option>
+			                    <option value="4">4</option>
+			                </select>
+			            </dd>
+			            <dt>course</dt>
+			            <dd>
+			                <input type="checkbox" name="course" id="chinese">
+			                <label for="chinese">chinese</label>
+			                <input type="checkbox" name="course" id="math">
+			                <label for="math">math</label>
+			                <input type="checkbox" name="course" id="english">
+			                <label for="english">english</label>
+			            </dd>
+			            <dd>
+			                <input type="submit" value="Submit it !">
+			                <input type="reset" value="Reset it !">
+			            </dd>
+			        </dl>
+			    </form>
+			    <script>
+			        {
+			            let submit = document.querySelector('.test3 input[type="submit"]');
+			            let name = document.querySelector('.name2');
+			            let passwd = document.querySelector('.passwd2');
+			            let male = document.querySelector('#male');
+			            let female = document.querySelector('#female');
+			            let course1 = document.querySelector('#chinese');
+			            let course2 = document.querySelector('#math');
+			            let course3 = document.querySelector('#english');
+			
+			            submit.onclick = function (e) {
+			                console.log(course1.checked + course2.checked + course3.checked);
+			                if (name.value === '') {
+			                    alert('请输入姓名！');
+			                    e.preventDefault();
+			                } else if (!(passwd.value.length >= 2 && passwd.value.length <= 10)) {
+			                    alert('请输入2-10位的密码！');
+			                    e.preventDefault();
+			                } else if (male.checked === female.checked) {
+			                    alert('请选择性别！');
+			                    e.preventDefault();
+			                } else if ((course1.checked + course2.checked + course3.checked) < 2) {
+			                    alert('请至少选择两个课程！');
+			                    e.preventDefault();
+			                }
+			            }
+			        }
+			    </script>
+	</body>
+</html>
